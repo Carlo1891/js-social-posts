@@ -41,7 +41,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=24",
         "author": {
             "name": "Luca Formicola",
-            "image": null
+            "image": "https://unsplash.it/300/300?image=13"
         },
         "likes": 56,
         "is_liked" : false,
@@ -89,7 +89,7 @@ const posts = [
         "media": "https://unsplash.it/600/400?image=554",
         "author": {
             "name": "Mario Di Nio",
-            "image": "null"
+            "image": "https://unsplash.it/300/300?image=14"
         },
         "likes": 95,
          "is_liked" : true,
@@ -131,27 +131,28 @@ const posts = [
 const postContainer = document.getElementById ('container');
 posts.forEach (post => {
     const postContent = document.createElement ('div');
+    const {id, content, media, author, likes, is_liked, created} = post;
     postContent.innerHTML = ` 
     <div class="post">
         <div class="post__header">
 
             <div class="post-meta">
                 <div class="post-meta__icon">
-                    <img class="profile-pic" src="https://unsplash.it/300/300?image=15" alt="Phil Mangione">
+                    <img class="profile-pic" src="${author.image}" alt="${author.name}">
                 </div>
 
                 <div class="post-meta__data">
-                    <div class="post-meta__author">Phil Mangione</div>
-                    <div class="post-meta__time">4 mesi fa</div>
+                    <div class="post-meta__author">${author.name}</div>
+                    <div class="post-meta__time">${created}</div>
                 </div>
 
             </div>
         </div>
 
-        <div class="post__text">Placeat libero ipsa nobis ipsum quibusdam quas harum ut. Distinctio minima iusto. Ad ad maiores et sint voluptate recusandae architecto. Et nihil ullam aut alias.</div>
+        <div class="post__text">${content}</div>
         
         <div class="post__image">
-            <img src="https://unsplash.it/600/300?image=171" alt="">
+            <img src="${media}" alt="">
         </div>
 
         <div class="post__footer">
@@ -166,7 +167,7 @@ posts.forEach (post => {
                 </div>
 
                 <div class="likes__counter">
-                    Piace a <b id="like-counter-1" class="js-likes-counter">80</b> persone
+                    Piace a <b id="like-counter-1" class="js-likes-counter">${likes}</b> persone
                 </div>
 
             </div>
